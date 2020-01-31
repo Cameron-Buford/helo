@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Auth from './Components/Auth'
+import Dashboard from './Components/Dashboard'
+import Form from './Components/Form'
+import Post from './Components/Post'
+import Nav from './Components/Nav'
+import routes from './routes';
 
-function App() {
+
+class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+
+    }
+  }
+
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav/>
+      {routes}
+      
     </div>
-  );
+  )
+}
 }
 
 export default App;
