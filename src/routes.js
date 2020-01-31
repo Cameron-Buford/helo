@@ -15,4 +15,4 @@ export default (
         <Route path='/post/:postid' component={Post}/>
         {/* <Route path='/' component={Nav}/> */}
     </Switch>
-)
+);

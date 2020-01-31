@@ -13,9 +13,9 @@ class Nav extends Component {
 
     render(){
 
-        // if (this.props.location.pathname === '/') {
-        //     return <></>;
-        // } else {
+        if (this.props.location.pathname === '/') {
+            return <></>;
+        } else {
            
             
             
@@ -27,11 +27,16 @@ class Nav extends Component {
                     <button>Logout</button>
                 </div>
                 )
-            // }
+            }
 
     }
 
 
 }
 
-export default withRouter(Nav);
+function mapStateToProps(state) {
+    return {user: state.reducer.user};
+    
+}
+
+export default connect(mapStateToProps)(withRouter(Nav));

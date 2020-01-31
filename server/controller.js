@@ -1,4 +1,4 @@
-const bcrpt = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 
 
 module.exports = {

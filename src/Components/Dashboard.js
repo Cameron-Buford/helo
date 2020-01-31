@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
+import {getUser} from '../Ducks/reducer'
 
 
 class Dashboard extends Component {
@@ -30,7 +32,15 @@ class Dashboard extends Component {
         )
     }
 
+    
+
 
 }
 
-export default Dashboard
+
+function mapStateToProps(state) {
+    return {user: state.reducer.user}
+    
+}
+
+export default connect(mapStateToProps, {getUser})(Dashboard)

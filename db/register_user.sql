@@ -6,4 +6,4 @@ VALUES (
     $1,
     $2
 )
-RETURNING id, username; 
+returning id, username; 
