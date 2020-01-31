@@ -34,15 +34,22 @@ module.exports = {
         }
 
         delete user[0].password;
-        req.sessoin.user = user[0];
+        req.session.user = user[0];
         res.status(202).send(req.session.user)
         
     },
     logout: (req, res) => {
-        if(req.session.user){
-            res.status(200).send('no user on session');
-        }
+        req.session.destroy();
+        res.sendStatus(200)
 
+    },
+
+    getUser: (req, res) => {
+        if (req.session.user){
+            res.status(200).send(req.session.user);
+        } else {
+            res.status(200).send('no user on session')
+        }
     }
     
 }
