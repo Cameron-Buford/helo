@@ -50,6 +50,16 @@ module.exports = {
         } else {
             res.status(200).send('no user on session')
         }
+    },
+
+
+    newPost: (req, res) => {
+        const db = req.app.get('db');
+        const { title, img, content} = req.body;
+
+        db.new_post(1, title, img, content)
+        .then(() => res.sendStatus(200))
+
     }
     
 }

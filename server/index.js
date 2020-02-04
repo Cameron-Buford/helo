@@ -45,3 +45,6 @@ app.post('/auth/login', authCtrl.login)
 app.post('/auth/logout', authCtrl.logout)
 app.get('/auth/user', authCtrl.getUser)
 
+//post endpoints
+app.post('/api/new', authCtrl.newPost)
+

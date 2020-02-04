@@ -28,6 +28,7 @@ class Dashboard extends Component {
         return(
             <div>Dashboard
                 <h1>yo, you made it here!</h1>
+                <div>post dashboard</div>
             </div>
         )
     }

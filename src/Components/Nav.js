@@ -20,11 +20,14 @@ class Nav extends Component {
             
             
             return(
-                <div>
-                    <div>navbar</div>
-                    <button>Home</button>
-                    <button>New Post</button>
-                    <button>Logout</button>
+                <div className='navbar'>
+                    <div>profile pic
+                        <img src='https://vignette.wikia.nocookie.net/vikingstv/images/8/86/Ragnar_Mid-Season_Promo.jpeg/revision/latest?cb=20161219020239'></img>
+                        <div>name</div>
+                    </div>
+                    <button className='homebutton' onClick={() => this.props.history.push('/dashboard')}>Home</button>
+                    <button className='postbutton' onClick={() => this.props.history.push('/post/:postid')}>to posts </button>
+                    <button className='logoutbutton' onClick= {() => axios.post('/auth/logout').then(() => this.props.history.push('/'))}>Logout</button>
                 </div>
                 )
             }

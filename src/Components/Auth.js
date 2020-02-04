@@ -77,7 +77,9 @@ class Auth extends Component {
                     <div className='login-input'>
                         <p>{'Password:'}</p>
                         <input
+                            type='text'
                             name='password'
+                            placeholder='password'
                             value={this.state.password}
                             onChange={e => this.handleChange(e)}
                         />
