@@ -14,34 +14,47 @@ class Post extends Component {
 
     newPost = () => {
         const {title, img, content} = this.state;
+        console.log('onclick')
         axios.post('/api/new', {title, img, content}).then(() => {
+            console.log('axios')
             this.props.history.push('/dashboard')
         })
     }
 
-    handleChange = ({name, value}) => {
-        this.setState({[name]: value})
-    }
+    handleChange = ({name, value}) => this.setState({[name]: value})
+    
 
     render(){
         const {title, img, content} = this.state;
         return(
             <div>New Post
                 <p>{'Title:'}</p>
-                <input></input>
-                <img src='https://vignette.wikia.nocookie.net/vikingstv/images/5/56/Floki_hd.jpg/revision/latest/top-crop/width/360/height/360?cb=20180127050230'></img>
-                <p>{'Image URL:'}</p>
                 <input
-                    name= 'pic'
-                    value= {img}
-                    placeholder= 'image url here'
+                    name='title'
+                    value={title}
+                    placeholder='enter title'
+                    onChange= {(e) => this.handleChange(e.target)}></input>
+                <img src= {img}/>
+                <p>{'Image URL:'}</p>
+                
+                <input
+                    className='newimg'
+                    name='img'
+                    value={img}
+                    placeholder='enter img url'
                     onChange= {(e) => this.handleChange(e.target)}
-                ></input>
+                    />
+                
                 <p>{'Content:'}</p>
-                <input></input>
+                <textarea className='newcontent'
+                name='content'
+                value={content}
+                placeholder='enter content'
+                onChange={(e) => this.handleChange(e.target)}/>
                 <button className= 'submitPostButton'
                     onClick = {() => {
-                        this.newPost()
+                        this.newPost({title, img, content})  
+                        
                     }}
                 >Post</button>
             </div>

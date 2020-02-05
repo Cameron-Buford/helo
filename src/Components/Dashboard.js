@@ -2,17 +2,22 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {getUser} from '../Ducks/reducer'
+import PostBoard from './PostBoard'
 
 
 class Dashboard extends Component {
     constructor(){
         super()
         this.state = {
+            posts: []
 
         }
     }
 
     componentDidMount(){
+        axios.get('/api/posts').then(res => {
+            this.setState({posts: res.data})
+        })
         axios.get('/auth/user')
         .then(res => {
             console.log(res)
@@ -24,11 +29,44 @@ class Dashboard extends Component {
         })
     }
 
+    
+
+
+
+
     render(){
+        console.log(this.state.posts)
+        const {title, img, content} = this.state
+        
         return(
-            <div>Dashboard
-                <h1>yo, you made it here!</h1>
-                <div>post dashboard</div>
+            <div className='dashmain'>Dashboard
+                <div className='searchbar'>
+                    <input
+                        className= 'seachinput'
+                        placeholder='Search by Title'>
+
+                        </input>
+                    <button>Reset</button>
+                </div>
+                
+                <div 
+                    className='postbox'
+                    >{this.state.posts.map(post => (
+                        <div>
+
+                            <PostBoard/>
+                        
+                            {/* <div>{post.title}</div>
+                            <div>{post.content}</div>
+                            <img>{img}</img>
+                             */}
+                            
+                        </div>
+                           
+                        
+                    ))}
+                        
+                    </div>
             </div>
         )
     }

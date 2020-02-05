@@ -60,6 +60,16 @@ module.exports = {
         db.new_post(1, title, img, content)
         .then(() => res.sendStatus(200))
 
+    },
+
+    getPosts: (req, res) => {
+        const db = req.app.get('db')
+        
+
+        db.get_posts()
+        .then((results) => res.status(200).send(results))
     }
+
+
     
 }

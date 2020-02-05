@@ -47,4 +47,5 @@ app.get('/auth/user', authCtrl.getUser)
 
 //post endpoints
 app.post('/api/new', authCtrl.newPost)
+app.get('/api/posts', authCtrl.getPosts)
 
